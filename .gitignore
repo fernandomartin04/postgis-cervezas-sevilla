@@ -1,0 +1,25 @@
+# =============================================================================
+# Archivos a ignorar en Git (.gitignore)
+# =============================================================================
+
+# Archivos temporales y caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+
+# Archivos de configuración local de editores e IDEs
+.vscode/
+.antigravity/
+.idea/
+.DS_Store
+
+# Material de clase / apuntes del temario
+Resumen_Tecnologias_Tema3.pdf
+resumen.html
+*.zip
+
+# Archivos temporales y de bloqueo de Office
+~$*.docx
+*.tmp
+*.bak

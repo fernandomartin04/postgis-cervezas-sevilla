@@ -1,0 +1,35 @@
+# *******************************************************************************
+# Proyecto: Mapa de Precios de Cerveza en Sevilla mediante PostgreSQL + PostGIS
+# *******************************************************************************
+
+services:
+  postgis_db:
+    image: postgis/postgis:16-3.4
+
+    # Nombre para el contenedor en Docker
+    container_name: postgis_cervezas_sevilla
+
+    # Si el contenedor se cae o reinicio el portatil vuelve a arrancar automáticamente
+    restart: unless-stopped
+
+    environment:
+      # Usuario administrador de la base de datos
+      POSTGRES_USER: postgres
+      # Contraseña para el usuario administrador
+      POSTGRES_PASSWORD: postgres
+      # Nombre de la base de datos que se creará por defecto al iniciar
+      POSTGRES_DB: cervezas_sevilla
+
+    ports:
+      # Expone el puerto estándar de PostgreSQL (5432) hacia tu máquina local
+      # Permite que te conectes desde la terminal, Python, DBeaver, pgAdmin, etc.
+      - "5432:5432"
+
+    volumes:
+      # Vincula el volumen administrado 'postgis_data' con la ruta donde PostgreSQL guarda los datos
+      - postgis_data:/var/lib/postgresql/data
+
+# Definición del volumen administrado de Docker
+volumes:
+  # Docker gestiona este espacio de almacenamiento de forma segura e independiente del ciclo de vida del contenedor
+  postgis_data:
