@@ -1,13 +1,6 @@
--- =============================================================================
--- Universidad Loyola Andalucía - Ampliación de Bases de Datos
--- Trabajo Práctico Individual (TPI 1) - Bases de Datos Especializadas
--- Script: 02_insert_30_bares.sql (Fase 3 - Población de Datos Reales)
--- 30 Establecimientos en Carretera de Carmona y adyacentes (Sevilla)
--- =============================================================================
 
 BEGIN;
 
--- Limpieza previa por si se re-ejecuta el script
 TRUNCATE TABLE bares RESTART IDENTITY;
 
 INSERT INTO bares (id, nombre, direccion, lat, lon, precio_cana, formato, fuente, geom) VALUES
@@ -42,6 +35,5 @@ INSERT INTO bares (id, nombre, direccion, lat, lon, precio_cana, formato, fuente
 (29, 'Bar Santa Marina', 'Calle San Luis, 95', 37.40107, -5.98888, 1.5, 'Caña Cruzcampo', 'Pizarra y terraza en San Luis (2024)', ST_SetSRID(ST_MakePoint(-5.98888, 37.40107), 4326)),
 (30, 'Bodeguita El Acerao', 'Calle Matahacas, 22', 37.3942, -5.986, 1.4, 'Caña Cruzcampo', 'Schlouk Map / Carta oficial (2024)', ST_SetSRID(ST_MakePoint(-5.986, 37.3942), 4326));
 
--- Ajuste de la secuencia para futuras inserciones
 SELECT setval('bares_id_seq', (SELECT MAX(id) FROM bares));
 COMMIT;
